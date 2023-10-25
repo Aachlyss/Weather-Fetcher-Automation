@@ -12,8 +12,12 @@ response = requests.get(request_url)
 
 if response.status_code == 200:
     data = response.json()
-    weather = data['weather']
+    weather = data['weather'][0]['description']
+    print("Description")
     print(weather)
+
+    print("-------------------------------------")
+
     temperature = data['main']['temp']
     min_temperature = data['main']['temp_min']
     max_temperature = data['main']['temp_max']
@@ -25,6 +29,9 @@ if response.status_code == 200:
     print("Curremt Temperature: " + f"{math.ceil(temperature)}")
     print("Curremt Min Temperature: " + f"{math.ceil(min_temperature)}")
     print("Curremt Max Temperature: " + f"{math.ceil(max_temperature)}")
+
+    print("-------------------------------------")
+
 
 else:
     print("An error occurred")
